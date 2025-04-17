@@ -57,8 +57,10 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
 
     //Drive
-    frontRightMotor.setInverted(true);
-    backRightMotor.setInverted(true);
+    frontLeftMotor.setInverted(true);
+    frontRightMotor.setInverted(false);
+    backLeftMotor.setInverted(true);
+    backRightMotor.setInverted(false);
     m_drive = new MecanumDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
   }
 
@@ -109,14 +111,13 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    drivestick.getAxisType(3);
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
     //Drive
-    m_drive.driveCartesian(drivestick.getX(),drivestick.getY(),drivestick.getTwist());
+    m_drive.driveCartesian(drivestick.getY(),-drivestick.getX(),-drivestick.getZ());
   }
 
   /** This function is called once when the robot is disabled. */
