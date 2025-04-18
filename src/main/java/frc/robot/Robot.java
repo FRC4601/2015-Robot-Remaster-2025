@@ -117,7 +117,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //Drive
-    m_drive.driveCartesian(drivestick.getY(),-drivestick.getX(),-drivestick.getZ());
+    m_drive.driveCartesian(drivestick.getY()*.75,-drivestick.getX()*.75,-drivestick.getZ()*.5);
   }
 
   /** This function is called once when the robot is disabled. */
